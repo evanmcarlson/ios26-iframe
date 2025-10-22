@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>iOS 26 iFrame Motion Permissions Bug</h1>
+
+    <p>
+      Device Motion permissions are not properly progated to the child iFrame in
+      iOS 26. You can reproduce the issue by clicking the the "Request motion"
+      button in the iFrame below. You should be prompted to grant permission to
+      access motion sensors. After accepting permissions, you should see "Motion
+      permissions denied". Refreshing the iFrame window has no effect. If you
+      refresh the outer page, and then click the "Request motion permissions" once
+      again the motion permissions have been cached and therefore propogate to the
+      child iFrame properly.
+    </p>
+    </div>
+
+    <iframe
+    id="my-iframe"
+    src="https://8w.8thwall.app/iframe-debug"
+    allow="camera;gyroscope;accelerometer;magnetometer;xr-spatial-tracking;microphone;"
+    >
+    </iframe>
+
+    <p>
+    The issue can be fixed by requesting motion permission from the outer window,
+    rather than requesting from the inner iFrame; however, this is not always an
+    option.
+    </p>
+  </body>
+</html>
